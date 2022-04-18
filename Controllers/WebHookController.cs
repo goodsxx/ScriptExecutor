@@ -15,13 +15,12 @@ namespace ScriptExecutor.Controllers
             _configuration = configuration;
         }
         
-        [HttpGet("ExecoutScript")]
-        public string ExecoutScript([FromBody] object inDto)
+        [HttpPost("ExecoutScript")]
+        public string Post([FromBody] object inDto)
         {
             try
             {
-                var addr = _configuration.GetSection("VuePress").Value;
-                Process.Start(addr);
+                Process.Start("./start.sh");
                 return "执行成功！";
             }
             catch (Exception ex)
